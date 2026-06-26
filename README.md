@@ -65,12 +65,6 @@ npm run db:seed       # populate demo data
 
 ```mermaid
 erDiagram
-    USERS ||--o| VENDOR_PROFILES : "has (if role=VENDOR)"
-    USERS ||--o{ ORDERS : "places (as buyer)"
-    VENDOR_PROFILES ||--o{ SERVICES : "lists"
-    VENDOR_PROFILES ||--o{ ORDERS : "receives"
-    SERVICES ||--o{ ORDERS : "booked in"
-
     USERS {
         uuid id PK
         varchar email UK
@@ -105,6 +99,12 @@ erDiagram
         enum payment_status "PENDING, PAID, FAILED, REFUNDED"
         varchar mock_payment_reference
     }
+
+   USERS ||--o| VENDOR_PROFILES : "has (if role=VENDOR)"
+    USERS ||--o{ ORDERS : "places (as buyer)"
+    VENDOR_PROFILES ||--o{ SERVICES : "lists"
+    VENDOR_PROFILES ||--o{ ORDERS : "receives"
+    SERVICES ||--o{ ORDERS : "booked in"
 ```
 
 A text/ASCII version, for any viewer that doesn't render Mermaid:
